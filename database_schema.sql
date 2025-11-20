@@ -1,7 +1,6 @@
 CREATE DATABASE family_budget;
 USE family_budget;
 
--- CREATE TABLE statements without constraints
 CREATE TABLE family_members (
     member_id INT,
     member_name VARCHAR(100),
@@ -53,26 +52,42 @@ CREATE TABLE savings_goals (
     description VARCHAR(255)
 );
 
--- ALTER TABLE statements to add PRIMARY KEY constraints
 ALTER TABLE family_members
 ADD PRIMARY KEY (member_id);
+
+ALTER TABLE family_members
+MODIFY member_id INT AUTO_INCREMENT;
 
 ALTER TABLE income_categories
 ADD PRIMARY KEY (income_category_id);
 
+ALTER TABLE income_categories
+MODIFY income_category_id INT AUTO_INCREMENT;
+
 ALTER TABLE income
 ADD PRIMARY KEY (income_id);
+
+ALTER TABLE income
+MODIFY income_id INT AUTO_INCREMENT;
 
 ALTER TABLE expense_categories
 ADD PRIMARY KEY (expense_category_id);
 
+ALTER TABLE expense_categories
+MODIFY expense_category_id INT AUTO_INCREMENT;
+
 ALTER TABLE expenses
 ADD PRIMARY KEY (expense_id);
+
+ALTER TABLE expenses
+MODIFY expense_id INT AUTO_INCREMENT;
 
 ALTER TABLE savings_goals
 ADD PRIMARY KEY (goal_id);
 
--- ALTER TABLE statements to add FOREIGN KEY constraints
+ALTER TABLE savings_goals
+MODIFY goal_id INT AUTO_INCREMENT;
+
 ALTER TABLE income
 ADD FOREIGN KEY (member_id) REFERENCES family_members(member_id);
 
@@ -85,7 +100,6 @@ ADD FOREIGN KEY (member_id) REFERENCES family_members(member_id);
 ALTER TABLE expenses
 ADD FOREIGN KEY (expense_category_id) REFERENCES expense_categories(expense_category_id);
 
--- INSERT statements to populate tables
 INSERT INTO family_members VALUES (1, 'John Smith', 'Father', 'john@email.com', '555-1001');
 INSERT INTO family_members VALUES (2, 'Mary Smith', 'Mother', 'mary@email.com', '555-1002');
 INSERT INTO family_members VALUES (3, 'Sarah Smith', 'Daughter', 'sarah@email.com', '555-1003');
